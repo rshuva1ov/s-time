@@ -1,0 +1,22 @@
+.selectBlock {
+    width: 250px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #072659;
+}
+
+.menuList {
+    margin-top: 10px;
+}
+
+.menuList li {
+    height: 20px;
+}
+
+.menuList li:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.menuList li.active {
+    max-width: 250px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}

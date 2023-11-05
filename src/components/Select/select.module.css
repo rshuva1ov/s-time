@@ -1,0 +1,11 @@
+.selectFilials {
+    color: #657A9D;
+    font-size: 16px;
+}
+
+.select {
+    width: 250px;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 6px 0 6px 10px;
+}

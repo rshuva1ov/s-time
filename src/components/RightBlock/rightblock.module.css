@@ -1,0 +1,32 @@
+.rightBlock {
+    margin-left: 30px;
+    width: 70%;
+}
+
+.list {
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #072659;
+}
+
+.listItem {
+    min-width: 150px;
+    cursor: pointer;
+}
+
+.listItem:not(:last-child) {
+    margin-right: 35px;
+}
+
+.input {
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    color: #657A9D;
+    border: 1px solid #657A9D;
+}
+
+.listItem span {
+    color: #657A9D;
+}
