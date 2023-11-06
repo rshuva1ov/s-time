@@ -11,7 +11,10 @@ interface FetchFilialsDataAction {
 
 interface FetchFilialsDataSuccessAction {
     type: FilialsDataActionTypes.FETCH_FILIALS_DATA_SUCCESS;
-    payload: FilialData[];
+    payload: {
+        max_pages: number,
+        data: FilialData[]
+    };
 }
 
 interface FetchFilialsDataErrorAction {
@@ -22,29 +25,25 @@ interface FetchFilialsDataErrorAction {
 export type FilialsDataAction = FetchFilialsDataAction | FetchFilialsDataSuccessAction | FetchFilialsDataErrorAction;
 
 export interface FilialsDataState {
-    filialsData: FilialData[];
+    filialsData: {
+        max_pages: number,
+        data: FilialData[]
+    };
     loading: boolean;
     error: null | string;
 }
 
 interface FilialData {
-    max_pages: number,
-    data: [
-        {
-            id: 0,
-            name: string,
-            filial: {
-                id: 0,
-                name: string
-            },
-            tt: {
-                id: 0,
-                name: string
-            },
-            active: true,
-            export: [
-                string
-            ]
-        }
-    ]
+    id: number,
+    name: string,
+    filial: {
+        id: number,
+        name: string
+    },
+    tt: {
+        id: number,
+        name: string
+    },
+    active: true,
+    export: string[],
 }

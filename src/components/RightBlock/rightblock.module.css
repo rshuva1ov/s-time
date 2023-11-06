@@ -1,32 +1,53 @@
 .rightBlock {
-    margin-left: 30px;
-    width: 70%;
+    padding-left: 30px;
+    max-width: 1105px;
+    width: 100%;
+}
+
+.item {
+    background-color: #f2f2f2;
+    text-align: left;
+    max-width: 145px;
 }
 
 .list {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+    grid-gap: 20px;
     align-items: center;
-    padding-bottom: 20px;
+    padding: 0 180px 20px 0;
     border-bottom: 1px solid #072659;
 }
 
 .listItem {
-    min-width: 150px;
+    text-align: left;
+    max-width: 145px;
     cursor: pointer;
 }
 
-.listItem:not(:last-child) {
-    margin-right: 35px;
-}
-
 .input {
-    width: 100%;
+    width: 146px;
+    height: 32px;
     padding: 5px;
     border-radius: 5px;
     color: #657A9D;
     border: 1px solid #657A9D;
 }
 
-.listItem span {
+.input::placeholder {
+    font-size: 17px;
+}
+
+.select {
+    width: 127px;
+    height: 32px;
+    padding: 5px;
+    font-size: 17px;
+    border-radius: 5px;
+    color: #657A9D;
+    border: 1px solid #657A9D;
+}
+
+.listItem a {
     color: #657A9D;
 }

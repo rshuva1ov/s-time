@@ -1,0 +1,34 @@
+.dataDesk {
+    padding-top: 20px;
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+    grid-gap: 20px;
+}
+
+.item {
+    text-align: left;
+    word-wrap: break-word;
+    max-width: 145px;
+    color: #072659;
+    font-size: 18px;
+}
+
+.lastItem {
+    display: flex;
+    justify-content: end;
+}
+
+.svg {
+    margin-right: 5px;
+}
+
+.export:not(:last-child) {
+    margin-bottom: 5px;
+}

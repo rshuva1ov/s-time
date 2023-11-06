@@ -3,6 +3,7 @@ import { Dispatch } from "redux";
 import { FilialsAction, FilialsActionTypes } from "../../types/filials";
 import { MenuActionTypes } from "../../types/menu";
 import { FilialsDataAction, FilialsDataActionTypes } from "../../types/filialsData";
+import { ValueActionTypes } from "../../types/value";
 
 export const fetchFilials = (): (dispatch: Dispatch<FilialsAction>) => Promise<void> => {
     return async (dispatch: Dispatch<FilialsAction>) => {
@@ -32,12 +33,14 @@ export function setMenuChange(payload: boolean) {
     };
 }
 
-export const fetchFilialsData = (id: number | string): (dispatch: Dispatch<FilialsDataAction>) => Promise<void> => {
+export const fetchFilialsData = (id: number | null, currentPage: number | string): (dispatch: Dispatch<FilialsDataAction>) => Promise<void> => {
     return async (dispatch: Dispatch<FilialsDataAction>) => {
+        if (id === 0) {
+            return
+        }
         try {
-            console.log('123');
             dispatch({ type: FilialsDataActionTypes.FETCH_FILIALS_DATA });
-            const response = await axios.get(`https://testjob.checkport.ru/filial/${id}/menu`);
+            const response = await axios.get(`https://testjob.checkport.ru/filial/${id}/menu/?page=${currentPage}`);
             dispatch({ type: FilialsDataActionTypes.FETCH_FILIALS_DATA_SUCCESS, payload: response.data });
         } catch (error) {
             dispatch({
@@ -46,4 +49,11 @@ export const fetchFilialsData = (id: number | string): (dispatch: Dispatch<Filia
             })
         }
     }
+}
+
+export function setValueChange(payload: number) {
+    return {
+        type: ValueActionTypes.SET_VALUE_CHANGE,
+        payload,
+    };
 }

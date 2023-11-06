@@ -1,7 +1,10 @@
 import { FilialsDataAction, FilialsDataActionTypes, FilialsDataState } from "../../types/filialsData"
 
 const initialState: FilialsDataState = {
-    filialsData: [],
+    filialsData: {
+        max_pages: 1,
+        data: [],
+    },
     loading: false,
     error: null,
 }
@@ -9,11 +12,18 @@ const initialState: FilialsDataState = {
 export const filialsDataReducer = (state = initialState, action: FilialsDataAction): FilialsDataState => {
     switch (action.type) {
         case FilialsDataActionTypes.FETCH_FILIALS_DATA:
-            return { loading: true, error: null, filialsData: [] }
+            return {
+                ...state,
+            }
         case FilialsDataActionTypes.FETCH_FILIALS_DATA_SUCCESS:
             return { loading: false, error: null, filialsData: action.payload }
         case FilialsDataActionTypes.FETCH_FILIALS_DATA_ERROR:
-            return { loading: false, error: action.payload, filialsData: [] }
+            return {
+                loading: false, error: action.payload, filialsData: {
+                    max_pages: 1,
+                    data: []
+                }
+            }
         default:
             return state;
     }

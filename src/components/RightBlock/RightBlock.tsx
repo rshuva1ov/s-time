@@ -1,8 +1,5 @@
-import React from 'react';
-import styles from './rightblock.module.css';
-import { Select } from '../Select';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { DataDesk } from '../DataDesk';
+import styles from './rightblock.module.css';
 
 export function RightBlock() {
   return (
@@ -18,7 +15,7 @@ export function RightBlock() {
           <input type="text" className={styles.input} placeholder='Торговая точка' />
         </li>
         <li className={styles.listItem}>
-          <select className={styles.input}>
+          <select className={styles.select}>
             <option value="true">Активно</option>
             <option value="true">Не активно</option>
           </select>

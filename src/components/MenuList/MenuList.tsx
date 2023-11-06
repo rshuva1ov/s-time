@@ -49,8 +49,8 @@ export function MenuList() {
   }
 
   return (
-    <Scrollbar style={{ height: 700 }}>
-      <div style={{ height: 2500 }}>
+    <Scrollbar style={{ height: 650 }}>
+      <div style={{ height: 1150 }}>
         <div className={styles.selectBlock}>
           <Select params={filials}></Select>
         </div>

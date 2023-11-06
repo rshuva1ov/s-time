@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { FilialState } from '../../types/filials';
@@ -8,14 +9,22 @@ interface SelectInterface {
 }
 
 export function Select({ params }: SelectInterface) {
-  const { fetchFilialsData } = useActions();
+  const { setValueChange } = useActions();
 
   return (
     <select className={styles.select}
       onChange={(e) => {
-        fetchFilialsData(e.target.value);
-      }
-      }
+        const selectedValue = e.target.value;
+        // Проверяем, если выбрано значение, отличное от пустой строки
+        if (selectedValue !== "") {
+          // Скрываем option "Выберите филиал" (index 0) путем установки его атрибута disabled
+          e.target.options[0].disabled = true;
+          // Смотрим, какой option был выбран, и добавляем атрибут selected для этого option
+          const selectedOption = e.target.options[e.target.selectedIndex];
+          selectedOption.selected = true;
+        }
+        setValueChange(parseInt(selectedValue));
+      }}
     >
       <option value="">Выберите филиал</option>
       {
@@ -27,6 +36,6 @@ export function Select({ params }: SelectInterface) {
           ))
           : <option></option>
       }
-    </select >
+    </select>
   );
 }
