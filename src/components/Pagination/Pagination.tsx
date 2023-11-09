@@ -43,9 +43,6 @@ export const Pagination = ({ pagesArray, totalPages, currentPage, changePage }: 
     pagesToDisplay.pop();
   }
 
-  console.log(totalPages);
-
-
   return (
     <div className={styles.pagination}>
       <span

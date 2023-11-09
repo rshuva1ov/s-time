@@ -18,7 +18,6 @@ export function MenuList() {
     setMenu();
   }, [])
 
-
   const listData = [
     "- Компоненты",
     "- Полуфабрикаты",
@@ -46,6 +45,10 @@ export function MenuList() {
 
   if (error) {
     return <h1>{error}</h1>
+  }
+
+  if (!filials) {
+    return <div>Нет данных для отображения</div>;
   }
 
   return (

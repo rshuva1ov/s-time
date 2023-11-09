@@ -1,15 +1,14 @@
-import styles from './datadesk.module.css';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
+import styles from './datadesk.module.css';
 //@ts-ignore
 import { ReactComponent as MySvg3 } from '../../utils/3.svg';
 //@ts-ignore
 import { ReactComponent as MySvg4 } from '../../utils/4.svg';
 //@ts-ignore
 import { ReactComponent as MySvg5 } from '../../utils/5.svg';
-import { Pagination } from '../Pagination';
 import { useEffect, useState } from 'react';
-import { fetchFilialsData } from '../../store/action-creator/filials';
 import { useActions } from '../../hooks/useActions';
+import { Pagination } from '../Pagination';
 
 export function DataDesk() {
   const { fetchFilialsData } = useActions();
@@ -18,7 +17,6 @@ export function DataDesk() {
   const { loading, error, filialsData } = useTypedSelector(state => state.filialsData);
   const [currentPage, setCurrentPage] = useState(1);
   const pagesArray: number[] = [];
-  const limit = 10;
 
   useEffect(() => {
     fetchFilialsData(value, currentPage);
@@ -34,6 +32,10 @@ export function DataDesk() {
 
   if (error) {
     return <h1>{error}</h1>
+  }
+
+  if (!filialsData || !filialsData.data) {
+    return <div>Нет данных для отображения</div>;
   }
 
   const handlePageChange = (pageNumber: number) => {
